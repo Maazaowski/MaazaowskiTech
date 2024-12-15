@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getPostBySlug, getAllPosts } from '../../utils/posts';
+import { formatDate } from '../../utils/date';
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<Layout title={post.title} description={post.excerpt}>
+  <article class="max-w-4xl mx-auto">
+    {post.image && (
+      <img 
+        src={post.image} 
+        alt={post.title}
+        class="w-full h-64 md:h-96 object-cover rounded-lg mb-8"
+      />
+    )}
+    <div class="prose dark:prose-invert max-w-none">
+      <h1 class="text-4xl font-bold mb-4">{post.title}</h1>
+      <div class="flex items-center gap-4 text-gray-600 dark:text-gray-400 mb-8">
+        <time datetime={post.publishDate.toISOString()}>
+          {formatDate(post.publishDate)}
+        </time>
+        <span>•</span>
+        <span>{post.readingTime} min read</span>
+      </div>
+      <div class="flex gap-2 mb-8">
+        {post.tags.map((tag) => (
+          <span class="text-sm bg-primary/10 text-primary px-3 py-1 rounded">
+            {tag}
+          </span>
+        ))}
+      </div>
+      <div set:html={post.content} />
+    </div>
+  </article>
+</Layout>

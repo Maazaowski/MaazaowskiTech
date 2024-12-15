@@ -1,0 +1,15 @@
+---
+import { getFeaturedPosts } from '../utils/posts';
+import PostCard from './PostCard.astro';
+
+const featuredPosts = await getFeaturedPosts();
+---
+
+<section class="py-12">
+  <h2 class="text-3xl font-bold mb-8 text-gray-800 dark:text-gray-100">Featured Posts</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {featuredPosts.map((post) => (
+      <PostCard post={post} />
+    ))}
+  </div>
+</section>

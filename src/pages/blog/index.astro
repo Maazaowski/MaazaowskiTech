@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getAllPosts } from '../../utils/posts';
+import PostCard from '../../components/PostCard.astro';
+
+const posts = await getAllPosts();
+---
+
+<Layout title="Blog">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold mb-8 text-gray-800 dark:text-gray-100">Latest Posts</h1>
+    <div class="space-y-8">
+      {posts.map((post) => (
+        <PostCard post={post} />
+      ))}
+    </div>
+  </div>
+</Layout>

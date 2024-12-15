@@ -1,0 +1,94 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const skills = [
+  { category: 'Frontend', items: ['React', 'TypeScript', 'Tailwind CSS', 'Next.js'] },
+  { category: 'Backend', items: ['Node.js', 'Express', 'MongoDB', 'PostgreSQL'] },
+  { category: 'DevOps', items: ['Docker', 'Git', 'CI/CD', 'AWS'] },
+];
+
+const experiences = [
+  {
+    title: 'Senior Software Engineer',
+    company: 'Tech Company',
+    period: '2022 - Present',
+    description: 'Leading development of scalable web applications using modern technologies.',
+  },
+  {
+    title: 'Full Stack Developer',
+    company: 'Startup',
+    period: '2020 - 2022',
+    description: 'Built and maintained multiple web applications from scratch.',
+  },
+];
+---
+
+<Layout title="About Me">
+  <div class="max-w-4xl mx-auto">
+    <section class="mb-16">
+      <h1 class="text-4xl font-bold mb-6 text-gray-800 dark:text-gray-100">About Me</h1>
+      <div class="prose dark:prose-invert max-w-none">
+        <p class="text-lg">
+          Hi! I'm Syed Muhammad Maaz, a passionate software engineer with a love for creating elegant solutions 
+          to complex problems. When I'm not coding, you can find me writing about tech, contributing to open-source 
+          projects, or exploring new technologies.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">Skills</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {skills.map((skillSet) => (
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl font-semibold mb-4 text-primary">{skillSet.category}</h3>
+            <ul class="space-y-2">
+              {skillSet.items.map((skill) => (
+                <li class="text-gray-700 dark:text-gray-300">{skill}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">Experience</h2>
+      <div class="space-y-8">
+        {experiences.map((exp) => (
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100">{exp.title}</h3>
+            <p class="text-primary font-medium">{exp.company}</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">{exp.period}</p>
+            <p class="text-gray-700 dark:text-gray-300">{exp.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">Get in Touch</h2>
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+        <p class="text-gray-700 dark:text-gray-300 mb-4">
+          I'm always open to interesting conversations and opportunities. Feel free to reach out!
+        </p>
+        <div class="flex space-x-4">
+          <a 
+            href="https://github.com/Maazaowski" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-primary hover:text-secondary"
+          >
+            GitHub
+          </a>
+          <a 
+            href="mailto:contact@techmaaz.dev"
+            class="text-primary hover:text-secondary"
+          >
+            Email
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

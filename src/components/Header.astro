@@ -7,24 +7,38 @@ const navItems = [
 ];
 ---
 
-<header class="bg-white dark:bg-dark shadow-lg">
-  <nav class="container mx-auto px-4 py-6">
-    <div class="flex justify-between items-center">
-      <a href="/" class="text-2xl font-bold text-primary">
-        TechMaaz
+<header class="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+  <div class="container flex h-16 items-center">
+    <div class="mr-8">
+      <a href="/" class="flex items-center space-x-2">
+        <span class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          TechMaaz
+        </span>
       </a>
-      <ul class="flex space-x-8">
+    </div>
+    
+    <nav class="flex flex-1 items-center justify-between">
+      <ul class="flex gap-6">
         {navItems.map(item => (
           <li>
             <a 
               href={item.href}
-              class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors"
+              class="text-sm font-medium transition-colors hover:text-primary"
             >
               {item.text}
             </a>
           </li>
         ))}
       </ul>
-    </div>
-  </nav>
+      
+      <div class="flex items-center gap-4">
+        <button class="size-9 flex items-center justify-center rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+          </svg>
+          <span class="sr-only">Toggle theme</span>
+        </button>
+      </div>
+    </nav>
+  </div>
 </header>

@@ -7,8 +7,7 @@ import auth from 'auth-astro';
 
 
 export default defineConfig({
-  integrations: [mdx(), react(), tailwind()],
+  integrations: [mdx(), react(), tailwind(), auth()],
   output: 'server',
   adapter: vercel(),
-  integrations: [auth()],
 });

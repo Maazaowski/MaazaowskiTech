@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import '../styles/globals.css';
 
 interface Props {
   title: string;
@@ -11,7 +12,7 @@ const { title, description = "TechMaaz - Where Code Meets Creativity" } = Astro.
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -20,11 +21,15 @@ const { title, description = "TechMaaz - Where Code Meets Creativity" } = Astro.
     <meta name="generator" content={Astro.generator} />
     <title>{title} | TechMaaz</title>
   </head>
-  <body class="min-h-screen bg-light dark:bg-dark">
-    <Header />
-    <main class="container mx-auto px-4 py-8">
-      <slot />
-    </main>
-    <Footer />
+  <body class="h-full">
+    <div class="min-h-screen flex flex-col">
+      <Header />
+      <main class="flex-grow">
+        <div class="container py-8">
+          <slot />
+        </div>
+      </main>
+      <Footer />
+    </div>
   </body>
 </html>
